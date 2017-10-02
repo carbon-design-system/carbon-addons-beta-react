@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Downshift from 'downshift';
 import { Icon } from 'carbon-components-react';
+import ClickListener from '../ClickListener';
 
 class ComboBoxDropdown extends PureComponent {
   state = {
@@ -122,67 +123,69 @@ class ComboBoxDropdown extends PureComponent {
       'bx--search-close--hidden': !this.state.hasContent
     });
     return (
-      <Downshift
-        onStateChange={({ inputValue }) => {
-          return inputValue && this.setState({ inputValue });
-        }}
-        selectedItem={this.state.inputValue}
-      >
-        {({
-          getInputProps,
-          getItemProps,
-          isOpen,
-          inputValue,
-          highlightedIndex,
-          selectedItem,
-        }) => (
-          <ul
-            {...other}
-            onClick={this.toggle}
-            onKeyPress={this.toggle}
-            value={this.state.value}
-            className={dropdownClasses}
-            tabIndex={tabIndex}
-          >
-            <li ref={(dropdownTrigger) => { this.dropdownTrigger = dropdownTrigger }} className="bx--dropdown-text">
-              <input
-                placeholder="Choose something..."
-                className="bx--combo-box__input"
-                type="text"
-                ref={(input) => { this.input = input }}
-                onChange={e => {
-                  this.setState({ inputValue: e.target.value });
-                }}
-                onInput={e => {
-                  this.setState({ hasContent: e.target.value.length > 0 })
-                }}
-              />
-              <Icon
-                name="close--glyph"
-                description="close"
-                className={clearClasses}
-                onClick={this.clearInput}
-              />
-            </li>
-            <li>
-              <svg
-                className="bx--dropdown__arrow"
-                fillRule="evenodd"
-                height="5"
-                name="caret--down"
-                role="img"
-                viewBox="0 0 10 5"
-                width="10"
-                aria-label="open list of options"
-              >
-                <title>open list of options</title>
-                <path d="M10 0L5 5 0 0z" />
-              </svg>
-            </li>
-            <li>{<ul className="bx--dropdown-list">{items.filter(i => !this.state.inputValue || i.props.itemText.toLowerCase().includes(this.state.inputValue.toLowerCase()))}</ul>}</li>
-          </ul>
-        )}
-      </Downshift>
+      <ClickListener onClickOutside={this.close}>
+        <Downshift
+          onStateChange={({ inputValue }) => {
+            return inputValue && this.setState({ inputValue });
+          }}
+          selectedItem={this.state.inputValue}
+        >
+          {({
+            getInputProps,
+            getItemProps,
+            isOpen,
+            inputValue,
+            highlightedIndex,
+            selectedItem,
+          }) => (
+            <ul
+              {...other}
+              onClick={this.toggle}
+              onKeyPress={this.toggle}
+              value={this.state.value}
+              className={dropdownClasses}
+              tabIndex={tabIndex}
+            >
+              <li ref={(dropdownTrigger) => { this.dropdownTrigger = dropdownTrigger }} className="bx--dropdown-text">
+                <input
+                  placeholder="Choose something..."
+                  className="bx--combo-box__input"
+                  type="text"
+                  ref={(input) => { this.input = input }}
+                  onChange={e => {
+                    this.setState({ inputValue: e.target.value });
+                  }}
+                  onInput={e => {
+                    this.setState({ hasContent: e.target.value.length > 0 })
+                  }}
+                />
+                <Icon
+                  name="close--glyph"
+                  description="close"
+                  className={clearClasses}
+                  onClick={this.clearInput}
+                />
+              </li>
+              <li>
+                <svg
+                  className="bx--dropdown__arrow"
+                  fillRule="evenodd"
+                  height="5"
+                  name="caret--down"
+                  role="img"
+                  viewBox="0 0 10 5"
+                  width="10"
+                  aria-label="open list of options"
+                >
+                  <title>open list of options</title>
+                  <path d="M10 0L5 5 0 0z" />
+                </svg>
+              </li>
+              <li>{<ul className="bx--dropdown-list">{items.filter(i => !this.state.inputValue || i.props.itemText.toLowerCase().includes(this.state.inputValue.toLowerCase()))}</ul>}</li>
+            </ul>
+          )}
+        </Downshift>
+      </ClickListener>
     );
   }
 }
