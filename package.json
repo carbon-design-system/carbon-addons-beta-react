@@ -4,7 +4,8 @@
   "description": "Bluemix specific components",
   "main": "cjs/index.js",
   "module": "es/index.js",
-  "repository": "https://github.com/carbon-design-system/carbon-addons-beta-react",
+  "repository":
+    "https://github.com/carbon-design-system/carbon-addons-beta-react",
   "author": "chrisdhanaraj <adhanaraj@gmail.com>",
   "license": "Apache-2.0",
   "dependencies": {
@@ -53,18 +54,14 @@
     "prepublish": "npm run build",
     "commitmsg": "commitlint --extends=@commitlint/config-angular -e",
     "build": "node scripts/build.js",
+    "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release":
+      "semantic-release pre && npm publish && semantic-release post"
   },
-  "files": [
-    "cjs/**/*",
-    "es/**/*",
-    "scss/**/*"
-  ],
+  "files": ["cjs/**/*", "es/**/*", "scss/**/*"],
   "eslintConfig": {
-    "extends": [
-      "carbon"
-    ],
+    "extends": ["carbon"],
     "parserOptions": {
       "ecmaVersion": 2016,
       "sourceType": "module"

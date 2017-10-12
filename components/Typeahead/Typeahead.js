@@ -90,25 +90,12 @@ export default class Typeahead extends Component {
                               .toLowerCase()
                               .startsWith(inputValue.toLowerCase())
                         )
-                        .map((item, index) => {
-                          const itemClass = classNames({
-                            'bx--typeahead__item': true,
-                            'bx--typeahead__item--highlighted':
-                              highlightedIndex === index,
-                            'bx--typeahead__item--active':
-                              selectedItem === item,
-                          });
-
-                          return (
-                            <div
-                              {...getItemProps({ item })}
-                              key={item.value}
-                              className={itemClass}
-                            >
-                              {itemToString(item)}
-                            </div>
-                          );
-                        })
+                        .map((item, index) => (
+                          <TypeaheadItem
+                            key={item.value}
+                            {...getItemProps({ item })}
+                          />
+                        ))
                     : null}
                 </div>
               </div>
@@ -116,6 +103,22 @@ export default class Typeahead extends Component {
           );
         }}
       </Downshift>
+    );
+  }
+}
+
+class TypeaheadItem extends Component {
+  render() {
+    const itemClass = classNames({
+      'bx--typeahead__item': true,
+      'bx--typeahead__item--highlighted': highlightedIndex === index,
+      'bx--typeahead__item--active': selectedItem === item,
+    });
+
+    return (
+      <div {...this.props} key={item.value} className={itemClass}>
+        {itemToString(item)}
+      </div>
     );
   }
 }
