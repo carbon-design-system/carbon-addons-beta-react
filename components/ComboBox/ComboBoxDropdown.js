@@ -6,9 +6,15 @@ import { Icon } from 'carbon-components-react';
 import ClickListener from '../ClickListener';
 
 class ComboBoxDropdown extends PureComponent {
+  // list of items
+  // user can filter items on input
+  // user can check an item
+  // item needs to stay checked until unchecked
+
   state = {
     inputValue: '',
-    hasContent: false
+    hasContent: false,
+    filterStarted: false
   };
 
   static propTypes = {
@@ -35,31 +41,49 @@ class ComboBoxDropdown extends PureComponent {
 
   constructor(props) {
     super(props);
-    const { children, selectedText, value, defaultText, open } = props;
+    // const { children, selectedText, value, defaultText, open } = props;
 
-    let matchingChild;
-    React.Children.forEach(children, child => {
-      if (
-        child.props.itemText === selectedText ||
-        child.props.value === value
-      ) {
-        matchingChild = child;
-      }
+    // let matchingChild;
+    // React.Children.forEach(children, child => {
+    //   if (
+    //     child.props.itemText === selectedText ||
+    //     child.props.value === value
+    //   ) {
+    //     matchingChild = child;
+    //   }
+    // });
+
+    // if (matchingChild) {
+    //   this.state = {
+    //     open,
+    //     selectedText: matchingChild.props.itemText,
+    //     value: matchingChild.props.value,
+    //   };
+    // } else {
+    //   this.state = {
+    //     open,
+    //     selectedText: defaultText,
+    //     value: '',
+    //   };
+    // }
+  }
+
+  componentDidMount = () => {
+    this.setState({
+      items: this.getItems()
+    })
+  }
+
+  getItems = () => {
+    const items = React.Children
+    .map(this.props.children, child => {
+      const isSelected = (!(this.state.inputValue === undefined)) && (this.state.inputValue.length > 0 || this.state.filterStarted) && child.props.itemText.toLowerCase().includes(this.state.inputValue.toLowerCase())
+      return React.cloneElement(child, {
+        onClick: this.handleItemClick,
+        selected: isSelected
+      })
     });
-
-    if (matchingChild) {
-      this.state = {
-        open,
-        selectedText: matchingChild.props.itemText,
-        value: matchingChild.props.value,
-      };
-    } else {
-      this.state = {
-        open,
-        selectedText: defaultText,
-        value: '',
-      };
-    }
+    return items;
   }
 
   close = () => {
@@ -92,6 +116,11 @@ class ComboBoxDropdown extends PureComponent {
     this.input.value = '';
   };
 
+  getFilteredItems = () => {
+    if (this.state.items) {
+      return this.state.items.filter(i => !this.state.inputValue || i.props.itemText.toLowerCase().includes(this.state.inputValue.toLowerCase()));      
+    }
+  }
 
   render() {
     const {
@@ -110,14 +139,6 @@ class ComboBoxDropdown extends PureComponent {
       [this.props.className]: this.props.className,
     });
 
-    const items = React.Children
-    .map(this.props.children, child => {
-      const isSelected = (!(this.state.inputValue === undefined)) && this.state.inputValue.length > 0 && child.props.itemText.toLowerCase().includes(this.state.inputValue.toLowerCase())
-      return React.cloneElement(child, {
-        onClick: this.handleItemClick,
-        selected: isSelected
-      })
-    });
     const clearClasses = classNames({
       'bx--search-close': true,
       'bx--search-close--hidden': !this.state.hasContent
@@ -156,7 +177,7 @@ class ComboBoxDropdown extends PureComponent {
                     this.setState({ inputValue: e.target.value });
                   }}
                   onInput={e => {
-                    this.setState({ hasContent: e.target.value.length > 0 })
+                    this.setState({ hasContent: e.target.value.length > 0, filterStarted: true })
                   }}
                 />
                 <Icon
@@ -181,7 +202,11 @@ class ComboBoxDropdown extends PureComponent {
                   <path d="M10 0L5 5 0 0z" />
                 </svg>
               </li>
-              <li>{<ul className="bx--dropdown-list">{items.filter(i => !this.state.inputValue || i.props.itemText.toLowerCase().includes(this.state.inputValue.toLowerCase()))}</ul>}</li>
+              <li>
+                {<ul className="bx--dropdown-list">
+                  {this.getFilteredItems()}
+                </ul>}
+              </li>
             </ul>
           )}
         </Downshift>
