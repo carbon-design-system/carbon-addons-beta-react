@@ -12,6 +12,9 @@
 
   &:focus {
     outline: 0;
+    svg {
+      fill: $brand-01;
+    }
   }
 }
 
