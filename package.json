@@ -1,7 +1,8 @@
 {
-  "name": "carbon-addons-bluemix-react",
+  "name": "carbon-addons-beta-react",
   "version": "0.0.0-development",
-  "description": "Bluemix specific components",
+  "description":
+    "Beta components, to be considered for potential main library components",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "repository":
