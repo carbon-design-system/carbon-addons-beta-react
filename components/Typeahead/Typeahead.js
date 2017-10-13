@@ -119,19 +119,3 @@ export default class Typeahead extends Component {
     );
   }
 }
-
-class TypeaheadItem extends Component {
-  render() {
-    const itemClass = classNames({
-      'bx--typeahead__item': true,
-      'bx--typeahead__item--highlighted': highlightedIndex === index,
-      'bx--typeahead__item--active': selectedItem === item,
-    });
-
-    return (
-      <div {...this.props} key={item.value} className={itemClass}>
-        {itemToString(item)}
-      </div>
-    );
-  }
-}
