@@ -1,0 +1,7 @@
+---
+applications:
+- name: carbon-addons-storybook
+  memory: 64M
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  root: storybook-static
+  random-route: true
