@@ -68,6 +68,10 @@
         }
       }
     }
+
+    &:disabled ~ button {
+      pointer-events: none;
+    }
   }
 
   .bx--typeahead__item {

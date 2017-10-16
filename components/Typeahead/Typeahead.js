@@ -17,14 +17,10 @@ export default class Typeahead extends Component {
   itemToString = item => (item ? item.label : '');
 
   render() {
-    const { items, placeholder, id, ...other } = this.props;
+    const { items, placeholder, disabled, id } = this.props;
 
     return (
-      <Downshift
-        onChange={this.handleChange}
-        itemToString={this.itemToString}
-        {...other}
-      >
+      <Downshift onChange={this.handleChange} itemToString={this.itemToString}>
         {({
           getInputProps,
           getItemProps,
@@ -51,8 +47,9 @@ export default class Typeahead extends Component {
                 <input
                   className="bx--typeahead__input bx--text-input"
                   {...getInputProps({
-                    placeholder,
+                    disabled,
                     id,
+                    placeholder,
                   })}
                 />
                 {inputValue && (
@@ -82,7 +79,7 @@ export default class Typeahead extends Component {
                     width="10"
                     height="5"
                     viewBox="0 0 10 5"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   >
                     <path d="M10 0L5 5 0 0z" />
                   </svg>
