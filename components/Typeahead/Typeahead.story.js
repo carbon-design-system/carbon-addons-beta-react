@@ -34,5 +34,5 @@ const onChange = evt => {
 };
 
 storiesOf('Typeahead', module).addWithInfo('Default', `Typeahead`, () => (
-  <Typeahead onChange={onChange} items={items} />
+  <Typeahead id="test" onChange={onChange} items={items} />
 ));
