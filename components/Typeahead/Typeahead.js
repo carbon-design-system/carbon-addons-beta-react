@@ -87,10 +87,6 @@ export default class Typeahead extends Component {
                 <div className="bx--typeahead-items">
                   {isOpen
                     ? items
-                        .filter(item => {
-                          console.log(item);
-                          return item;
-                        })
                         .filter(
                           item =>
                             !inputValue ||
@@ -99,7 +95,6 @@ export default class Typeahead extends Component {
                               .startsWith(inputValue.toLowerCase())
                         )
                         .map((item, index) => {
-                          console.log(item);
                           const itemClass = classNames({
                             'bx--typeahead__item': true,
                             'bx--typeahead__item--highlighted':
