@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'carbon-components-react';
 import { storiesOf, action } from '@storybook/react';
 import Typeahead from './Typeahead';
 
