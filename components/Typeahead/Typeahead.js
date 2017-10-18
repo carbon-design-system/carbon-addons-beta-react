@@ -5,7 +5,6 @@ import Downshift from 'downshift';
 
 export default class Typeahead extends Component {
   static defaultProps = {
-    isOpen: false,
     placeholder: 'Filter...',
     onChange: () => {},
   };
@@ -17,10 +16,14 @@ export default class Typeahead extends Component {
   itemToString = item => (item ? item.label : '');
 
   render() {
-    const { items, placeholder, disabled, id } = this.props;
+    const { items, placeholder, disabled, id, ...other } = this.props;
 
     return (
-      <Downshift onChange={this.handleChange} itemToString={this.itemToString}>
+      <Downshift
+        onChange={this.handleChange}
+        itemToString={this.itemToString}
+        {...other}
+      >
         {({
           getInputProps,
           getItemProps,
