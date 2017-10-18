@@ -33,6 +33,18 @@ const onChange = evt => {
   console.log(evt);
 };
 
-storiesOf('Typeahead', module).addWithInfo('Default', `Typeahead`, () => (
-  <Typeahead id="test" onChange={onChange} items={items} />
-));
+storiesOf('Typeahead', module)
+  .addWithInfo('Default', `Typeahead`, () => (
+    <Typeahead id="test" onChange={onChange} items={items} />
+  ))
+  .addWithInfo('Pre-selected', `Typeahead`, () => (
+    <Typeahead
+      id="test"
+      selectedItem={{
+        label: 'Banana',
+        value: 'banana',
+      }}
+      onChange={onChange}
+      items={items}
+    />
+  ));
