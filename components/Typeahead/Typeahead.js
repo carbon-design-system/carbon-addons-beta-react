@@ -5,6 +5,7 @@ import Downshift from 'downshift';
 
 export default class Typeahead extends Component {
   static defaultProps = {
+    startsWith: false,
     placeholder: 'Filter...',
     onChange: () => {},
   };
@@ -15,8 +16,26 @@ export default class Typeahead extends Component {
 
   itemToString = item => (item ? item.label : '');
 
+  filterItems = (inputValue, item, startsWith) => {
+    if (!inputValue) {
+      return true;
+    }
+
+    const label = item.label.toLowerCase();
+    const value = inputValue.toLowerCase();
+
+    return startsWith ? label.startsWith(value) : label.includes(value);
+  };
+
   render() {
-    const { items, placeholder, disabled, id, ...other } = this.props;
+    const {
+      items,
+      placeholder,
+      disabled,
+      startsWith,
+      id,
+      ...other
+    } = this.props;
 
     return (
       <Downshift
@@ -90,12 +109,8 @@ export default class Typeahead extends Component {
                 <div className="bx--typeahead-items">
                   {isOpen
                     ? items
-                        .filter(
-                          item =>
-                            !inputValue ||
-                            item.label
-                              .toLowerCase()
-                              .startsWith(inputValue.toLowerCase())
+                        .filter(item =>
+                          this.filterItems(inputValue, item, startsWith)
                         )
                         .map((item, index) => {
                           const itemClass = classNames({
