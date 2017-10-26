@@ -16,6 +16,7 @@
   // need manually hide since we use our own icon to clear.
   .bx--typeahead__input::-ms-clear {
     display: none;
+    visibility: hidden;
   }
 
   .bx--typeahead__input:disabled ~ .bx--typeahead-menu {
