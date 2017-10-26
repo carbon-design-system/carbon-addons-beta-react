@@ -1,7 +1,9 @@
 ---
 applications:
-- name: carbon-addons-storybook
+- name: carbon-addons-beta-storybook
   memory: 64M
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
   root: storybook-static
-  random-route: true
+  routes:
+    - route: carbon-addons-beta-storybook.mybluemix.net
+    - route: addons-beta-storybook.carbondesignsystem.com
