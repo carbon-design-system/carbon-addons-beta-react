@@ -5,8 +5,7 @@
     "Beta components, to be considered for potential main library components",
   "main": "cjs/index.js",
   "module": "es/index.js",
-  "repository":
-    "https://github.com/carbon-design-system/carbon-addons-beta-react",
+  "repository": "https://github.com/carbon-design-system/carbon-addons-beta-react",
   "author": "chrisdhanaraj <adhanaraj@gmail.com>",
   "license": "Apache-2.0",
   "dependencies": {
