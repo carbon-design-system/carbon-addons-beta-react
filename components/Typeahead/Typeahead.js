@@ -58,9 +58,12 @@ export default class Typeahead extends Component {
             'bx--typeahead-menu-icon': true,
             'bx--typeahead-menu-icon--active': isOpen,
           });
-
           const iconClearClass = classNames({
             'bx--typeahead-clear-icon': true,
+          });
+          const itemsClassName = classNames({
+            'bx--typeahead-items': true,
+            'bx--typeahead-items--expanded': isOpen,
           });
 
           return (
@@ -106,7 +109,7 @@ export default class Typeahead extends Component {
                     <path d="M10 0L5 5 0 0z" />
                   </svg>
                 </button>
-                <div className="bx--typeahead-items">
+                <div className={itemsClassName}>
                   {isOpen
                     ? items
                         .filter(item =>
