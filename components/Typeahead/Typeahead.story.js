@@ -47,4 +47,16 @@ storiesOf('Typeahead', module)
       onChange={onChange}
       items={items}
     />
-  ));
+  ))
+  .addWithInfo('Disabled', 'Typeahead', () => (
+    <Typeahead
+      id="test"
+      selectedItem={{
+        label: 'Banana',
+        value: 'banana',
+      }}
+      onChange={onChange}
+      items={items}
+      disabled={true}
+    />
+  ))
