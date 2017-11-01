@@ -11,18 +11,28 @@ export default class Typeahead extends Component {
   };
 
   state = {
-    isMenuOpen: false,
+    isMenuClick: false,
   }
-
 
   handleChange = evt => {
     this.props.onChange(evt);
   };
 
-  handleOnClick = (...args) => {
-    this.setState(state => ({
-      isMenuOpen: !state.isMenuOpen,
-    }));
+  // When a user is manipulating the input, we need to invalidate `isMenuClick`
+  // since we only want to display items related to the input.
+  handleOnInputValueChange = () => {
+    if (this.state.isMenuClick) {
+      this.setState({ isMenuClick: false });
+    }
+  }
+
+  // Invoked whenever a user clicks on the Menu Target. This should guarantee
+  // that `isMenuClick` is set to true in order to be used in the `filter`
+  // method for items so that all items are included in the menu dropdown.
+  handleOnClick = () => {
+    if (!this.state.isMenuClick) {
+      this.setState({ isMenuClick: true });
+    }
   }
 
   itemToString = item => (item ? item.label : '');
@@ -50,6 +60,7 @@ export default class Typeahead extends Component {
     return (
       <Downshift
         onChange={this.handleChange}
+        onInputValueChange={this.handleOnInputValueChange}
         itemToString={this.itemToString}
         {...other}
       >
@@ -80,6 +91,7 @@ export default class Typeahead extends Component {
                     disabled,
                     id,
                     placeholder,
+                    onChange: this.handleOnInputValueChange,
                   })}
                 />
                 {this.renderClear(inputValue, clearSelection)}
@@ -166,11 +178,13 @@ export default class Typeahead extends Component {
     });
     const children = items
       .filter(item => {
+        // If the menu is not open, we don't want to display any items
         if (!isOpen) {
           return false;
         }
 
-        if (this.state.isMenuOpen) {
+        // If the render is trigged by a menu click, we should display all items
+        if (this.state.isMenuClick) {
           return true;
         }
 
@@ -185,10 +199,7 @@ export default class Typeahead extends Component {
 
         return (
           <div
-            {...getItemProps({
-              item,
-              onClick: this.handleOnClick,
-            })}
+            {...getItemProps({ item })}
             key={item.value}
             className={itemClass}
           >
