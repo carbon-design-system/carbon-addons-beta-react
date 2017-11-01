@@ -126,6 +126,7 @@ export default class Typeahead extends Component {
         {...getButtonProps({
           'aria-label': isOpen ? 'close.menu' : 'open.menu',
           onClick: this.handleOnClick,
+          disabled: this.props.disabled,
         })}
       >
         <svg
@@ -148,7 +149,8 @@ export default class Typeahead extends Component {
     return (
       <button
         onClick={clearSelection}
-        className="bx--typeahead-clear">
+        className="bx--typeahead-clear"
+        disabled={this.props.disabled}>
         <svg
           className="bx--typeahead-clear-icon"
           width="16"
