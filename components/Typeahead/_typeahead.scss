@@ -19,7 +19,8 @@
     visibility: hidden;
   }
 
-  .bx--typeahead__input:disabled ~ .bx--typeahead-menu {
+  .bx--typeahead__input:disabled ~ .bx--typeahead-menu,
+  .bx--typeahead__input:disabled ~ .bx--typeahead-clear {
     pointer-events: none;
   }
 
