@@ -2123,28 +2123,32 @@ caniuse-lite@^1.0.30000744, caniuse-lite@^1.0.30000748:
   version "1.0.30000751"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000751.tgz#298ad34182ca4359757b4a93afc681b7b917e358"
 
-carbon-components-react@^3.10.3:
-  version "3.12.2"
-  resolved "https://registry.yarnpkg.com/carbon-components-react/-/carbon-components-react-3.12.2.tgz#be4f99fcda8739ae78be40e57ac047c295c3ac82"
+carbon-components-react@^5.0.6:
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/carbon-components-react/-/carbon-components-react-5.0.6.tgz#18a34dff3063cfacb952cc00266caea33df93135"
   dependencies:
     classnames "2.2.5"
-    flatpickr "^3.0.7"
+    flatpickr "4.0.7"
     lodash.debounce "^4.0.8"
-    react-addons-css-transition-group "^15.4.2"
     warning "3.0.0"
     window-or-global "^1.0.1"
 
-carbon-components@^7.21.1:
-  version "7.22.4"
-  resolved "https://registry.yarnpkg.com/carbon-components/-/carbon-components-7.22.4.tgz#7d0b861d3a7f4407ffcfc02a6024f7891b5c1eaf"
+carbon-components@^8.1.13:
+  version "8.1.13"
+  resolved "https://registry.yarnpkg.com/carbon-components/-/carbon-components-8.1.13.tgz#addec6b8f15c7f21938c52e4d669b293c813289b"
   dependencies:
     carbon-icons "^6.0.4"
     flatpickr "2.6.3"
     lodash.debounce "^4.0.8"
+    warning "^3.0.0"
 
-carbon-icons@^6.0.4, carbon-icons@^6.1.0:
+carbon-icons@^6.0.4:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/carbon-icons/-/carbon-icons-6.1.0.tgz#012951c20ee978060818a034099c163a9086d50e"
+
+carbon-icons@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/carbon-icons/-/carbon-icons-6.2.0.tgz#84f568a64b1465c52183eb26de736893b3d8abdb"
 
 case-sensitive-paths-webpack-plugin@^2.0.0, case-sensitive-paths-webpack-plugin@^2.1.1:
   version "2.1.1"
@@ -2940,9 +2944,9 @@ dot-prop@^4.1.0:
   dependencies:
     is-obj "^1.0.0"
 
-downshift@^1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-1.9.1.tgz#2a079ae500845cf1955e2f82676352312a6bcaa6"
+downshift@^1.22.3:
+  version "1.22.3"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-1.22.3.tgz#e8d19586edbaaf5379ef0ab3ff83609a57c03193"
 
 duplexer@~0.1.1:
   version "0.1.1"
@@ -3013,10 +3017,6 @@ enhanced-resolve@^3.4.0:
     memory-fs "^0.4.0"
     object-assign "^4.0.1"
     tapable "^0.2.7"
-
-entities@~1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
 errno@^0.1.3:
   version "0.1.4"
@@ -3437,9 +3437,9 @@ flatpickr@2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-2.6.3.tgz#457357532deb135f3da64b425bf4435737961564"
 
-flatpickr@^3.0.7:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-3.0.7.tgz#2aa980c0bd83884c0299ee9fba3b7809bea16a29"
+flatpickr@4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.0.7.tgz#a73ea27abafb084c276569223ab6ff4fafe1cba0"
 
 flatten@^1.0.2:
   version "1.0.2"
@@ -4502,12 +4502,6 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-linkify-it@^2.0.0:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/linkify-it/-/linkify-it-2.0.3.tgz#d94a4648f9b1c179d64fa97291268bdb6ce9434f"
-  dependencies:
-    uc.micro "^1.0.1"
-
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -4761,20 +4755,6 @@ map-stream@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/map-stream/-/map-stream-0.1.0.tgz#e56aa94c4c8055a16404a0674b78f215f7c8e194"
 
-markdown-it-sup@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/markdown-it-sup/-/markdown-it-sup-1.0.0.tgz#cb9c9ff91a5255ac08f3fd3d63286e15df0a1fc3"
-
-markdown-it@^8.3.1:
-  version "8.3.2"
-  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-8.3.2.tgz#df4b86530d17c3bc9beec3b68d770b92ea17ae96"
-  dependencies:
-    argparse "^1.0.7"
-    entities "~1.1.1"
-    linkify-it "^2.0.0"
-    mdurl "^1.0.1"
-    uc.micro "^1.0.3"
-
 marked@^0.3.6:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.6.tgz#b2c6c618fccece4ef86c4fc6cb8a7cbf5aeda8d7"
@@ -4790,10 +4770,6 @@ marksy@^2.0.0:
 math-expression-evaluator@^1.2.14:
   version "1.2.17"
   resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.17.tgz#de819fdbcd84dccd8fae59c6aeb79615b9d266ac"
-
-mdurl@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -5964,12 +5940,6 @@ react-addons-create-fragment@^15.5.3:
     loose-envify "^1.3.1"
     object-assign "^4.1.0"
 
-react-addons-css-transition-group@^15.4.2:
-  version "15.6.0"
-  resolved "https://registry.yarnpkg.com/react-addons-css-transition-group/-/react-addons-css-transition-group-15.6.0.tgz#69887cf6e4874d25cd66e22a699e29f0d648aba0"
-  dependencies:
-    react-transition-group "^1.2.0"
-
 react-docgen@^2.15.0:
   version "2.16.0"
   resolved "https://registry.yarnpkg.com/react-docgen/-/react-docgen-2.16.0.tgz#03c9eba935de8031d791ab62657b7b6606ec5da6"
@@ -6103,16 +6073,6 @@ react-style-proptype@^3.0.0:
 react-transition-group@^1.1.2:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.1.tgz#e11f72b257f921b213229a774df46612346c7ca6"
-  dependencies:
-    chain-function "^1.0.0"
-    dom-helpers "^3.2.0"
-    loose-envify "^1.3.1"
-    prop-types "^15.5.6"
-    warning "^3.0.0"
-
-react-transition-group@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.0.tgz#b51fc921b0c3835a7ef7c571c79fc82c73e9204f"
   dependencies:
     chain-function "^1.0.0"
     dom-helpers "^3.2.0"
@@ -7162,10 +7122,6 @@ typedarray@^0.0.6:
 ua-parser-js@^0.7.9:
   version "0.7.13"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.13.tgz#cd9dd2f86493b3f44dbeeef3780fda74c5ee14be"
-
-uc.micro@^1.0.1, uc.micro@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.3.tgz#7ed50d5e0f9a9fb0a573379259f2a77458d50192"
 
 uglify-js@^2.6, uglify-js@^2.8.27, uglify-js@^2.8.29:
   version "2.8.29"
