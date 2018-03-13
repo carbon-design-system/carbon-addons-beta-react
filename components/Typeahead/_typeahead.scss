@@ -70,6 +70,10 @@
     transform: rotate(180deg);
   }
 
+  .bx--typeahead-menu-icon--disabled {
+    fill: $ui-04;
+  }
+
   .bx--typeahead-menu-icon, .bx--typeahead-clear-icon {
     height: 100%;
   }
@@ -95,6 +99,10 @@
 
   .bx--typeahead-clear-icon {
     fill: $ui-05;
+  }
+
+  .bx--typeahead-clear-icon--disabled {
+    fill: $ui-04;
   }
 
   .bx--typeahead-items {
