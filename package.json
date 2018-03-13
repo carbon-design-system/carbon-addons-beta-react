@@ -51,7 +51,8 @@
     "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "semantic-release":
-      "semantic-release pre && npm publish && semantic-release post"
+      "semantic-release pre && npm publish && semantic-release post",
+    "test": ""
   },
   "files": ["cjs/**/*", "es/**/*", "scss/**/*"],
   "eslintConfig": {

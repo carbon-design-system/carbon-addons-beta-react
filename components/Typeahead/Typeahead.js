@@ -88,6 +88,8 @@ export default class Typeahead extends Component {
                 <input
                   className="bx--typeahead__input bx--text-input"
                   {...getInputProps({
+                    'aria-autocomplete': "list",
+                    'aria-expanded': isOpen,
                     disabled,
                     id,
                     placeholder,
@@ -118,6 +120,7 @@ export default class Typeahead extends Component {
     const iconMenuClass = classNames({
       'bx--typeahead-menu-icon': true,
       'bx--typeahead-menu-icon--active': isOpen,
+      'bx--typeahead-menu-icon--disabled': this.props.disabled
     });
 
     return (
@@ -146,13 +149,19 @@ export default class Typeahead extends Component {
     if (!inputValue) {
       return null;
     }
+
+    const iconClearClass = classNames({
+      'bx--typeahead-clear-icon': true,
+      'bx--typeahead-clear-icon--disabled': this.props.disabled
+    });
     return (
       <button
+        aria-label="clear selection"
         onClick={clearSelection}
         className="bx--typeahead-clear"
         disabled={this.props.disabled}>
         <svg
-          className="bx--typeahead-clear-icon"
+          className={iconClearClass}
           width="16"
           height="16"
           viewBox="0 0 16 16"
