@@ -82,33 +82,36 @@ export default class Typeahead extends Component {
           const iconClearClass = classNames({
             'bx--typeahead-clear-icon': true,
           });
+          const inputProps = getInputProps({
+            disabled,
+            id,
+            placeholder,
+            onChange: this.handleOnInputValueChange,
+          });
+          // remove aria attributes on input for accessibility
+          delete inputProps.role;
+          delete inputProps['aria-autocomplete'];
+          delete inputProps['aria-expanded'];
+          delete inputProps['aria-activedescendant'];
           return (
-            <div>
-              <div className="bx--typeahead bx--form-item">
-                <input
-                  className="bx--typeahead__input bx--text-input"
-                  {...getInputProps({
-                    'aria-autocomplete': "list",
-                    'aria-expanded': isOpen,
-                    disabled,
-                    id,
-                    placeholder,
-                    onChange: this.handleOnInputValueChange,
-                  })}
-                />
-                {this.renderClear(inputValue, clearSelection)}
-                {this.renderMenuToggle(isOpen, getButtonProps)}
-                {this.renderItems({
-                  items,
-                  isOpen,
-                  inputValue,
-                  getItemProps,
-                  itemToString,
-                  highlightedIndex,
-                  selectedItem,
-                  startsWith,
-                })}
-              </div>
+            <div className="bx--typeahead bx--form-item"
+              role="combobox" aria-label="typeahead" aria-expanded={isOpen} aria-autocomplete="list">
+              <input
+                className="bx--typeahead__input bx--text-input"
+                {...inputProps}
+              />
+              {this.renderClear(inputValue, clearSelection)}
+              {this.renderMenuToggle(isOpen, getButtonProps)}
+              {this.renderItems({
+                items,
+                isOpen,
+                inputValue,
+                getItemProps,
+                itemToString,
+                highlightedIndex,
+                selectedItem,
+                startsWith,
+              })}
             </div>
           );
         }}
