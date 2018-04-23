@@ -1,6 +1,9 @@
 @import 'carbon-components/scss/globals/scss/colors';
+@import 'carbon-components/scss/globals/scss/layer';
+@import 'carbon-components/scss/globals/scss/helper-mixins';
 @import 'carbon-components/scss/globals/scss/import-once';
 @import 'carbon-components/scss/globals/scss/css--helpers';
+@import 'carbon-components/scss/globals/scss/css--reset';
 @import 'carbon-components/scss/globals/scss/vars';
 
 @include exports('typeahead') {
@@ -33,7 +36,7 @@
   }
 
   .bx--typeahead-menu {
-    @include button-reset(false);
+    @include button-reset;
     position: absolute;
     top: 0;
     right: 0;
@@ -79,7 +82,7 @@
   }
 
   .bx--typeahead-clear {
-    @include button-reset(false);
+    @include button-reset;
     position: absolute;
     top: 0;
     right: rem(45px);
@@ -119,6 +122,7 @@
 
   .bx--typeahead-items--expanded {
     height: auto;
+    z-index: 100;
   }
 
   .bx--typeahead__item {
